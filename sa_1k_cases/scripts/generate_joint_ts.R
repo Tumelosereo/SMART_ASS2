@@ -149,9 +149,25 @@ cum_plot <- (ggplot(final_output)
 
 print(cum_plot)
 
-# 
+# Save cases time series plot to file
 
-ggsave('cum_plot.png',cum_plot)
+if(dir.exists('./figs')){
+  ggsave(filename = './figs/cum_plot.jpg', 
+         plot = cum_plot,
+         width = 8.51,
+         height = 5.67,
+         units = 'in'
+  )
+}else{
+  dir.create('./figs')
+  ggsave(filename = './figs/cum_plot.jpg', 
+         plot = cum_plot,
+         width = 8.51,
+         height = 5.67,
+         units = 'in'
+  )
+}
+
 
 
 
