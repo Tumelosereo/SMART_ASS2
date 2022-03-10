@@ -8,7 +8,7 @@ library("ggplot2")
 
 
 # Source the inputs
-source("scripts/inputs.R", local = TRUE)
+source("./scripts/inputs.R", local = TRUE)
 
 set.seed(1234)
 
@@ -47,13 +47,8 @@ final_output <- simulation_output_mod %>%
   mutate(cum_cases = cumsum(cases)) %>% 
   ungroup()
 
-# Count the number of case that are at specified number of cases
+# 
 
-target<- final_output %>%
-  filter(sim_id == 1) %>% 
-  filter(cum_cases >= 1000) %>% 
-  pull(day) %>% 
-  min()
 
 # The targeted cases
 
@@ -62,7 +57,8 @@ threshold <- 1000
 # final_output %>% group_by(sim_id) %>% summarise(maxcases = max(cum_cases)) 
 #%>% pull(maxcases) %>% summary()
 
-# Calculating for each simulation
+# Calculating Count the number of case that are at specified number of cases
+# for each simulation
 
 my_threshold <- lapply(1:number_of_sims, function(ii){
   target<- final_output %>%
@@ -198,9 +194,5 @@ if(dir.exists('./figs')){
          units = 'in'
   )
 }
-
-
-
-
 
 

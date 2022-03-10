@@ -4,10 +4,23 @@ library(tidyr)
 library(purrr)
 
 #Helper functions
-source('scripts/helper_functions.R')
+source('./scripts/helper_functions.R')
+
+# # command-line arguments
 
 
-args <- commandArgs(trailingOnly = TRUE)
+args <- commandArgs()
+
+if (length(args) > 3 ) {
+  sigma = 2
+  mu = 5
+  sim_id = 4
+  
+} else(length(args) == 3) {
+  sigma = args[1]
+  mu = args[2]
+  sim_id = args[3]
+}
 
 #Get the cleaned data
 dat <- if (file.exists("./data/sa_covid_upto_mar13_2020.rds")) {
