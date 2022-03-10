@@ -4,7 +4,10 @@ library(tidyr)
 library(purrr)
 
 #Helper functions
-source('./scripts/helper_functions.R')
+source('scripts/helper_functions.R')
+
+
+args <- commandArgs(trailingOnly = TRUE)
 
 #Get the cleaned data
 dat <- if (file.exists("./data/sa_covid_upto_mar13_2020.rds")) {

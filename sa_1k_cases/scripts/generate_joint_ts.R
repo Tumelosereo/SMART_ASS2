@@ -8,7 +8,7 @@ library("ggplot2")
 
 
 # Source the inputs
-source("./scripts/inputs.R", local = TRUE)
+source("scripts/inputs.R", local = TRUE)
 
 set.seed(1234)
 
@@ -59,7 +59,8 @@ target<- final_output %>%
 
 threshold <- 1000
 
-# final_output %>% group_by(sim_id) %>% summarise(maxcases = max(cum_cases)) %>% pull(maxcases) %>% summary()
+# final_output %>% group_by(sim_id) %>% summarise(maxcases = max(cum_cases)) 
+#%>% pull(maxcases) %>% summary()
 
 # Calculating for each simulation
 
@@ -87,7 +88,8 @@ ci_u_cases_date <-  ci_cases[2] + min(dat$date)
 
 threshold_10g <- 10000
 
-# final_output %>% group_by(sim_id) %>% summarise(maxcases = max(cum_cases)) %>% pull(maxcases) %>% summary()
+# final_output %>% group_by(sim_id) %>% summarise(maxcases = max(cum_cases)) 
+# %>% pull(maxcases) %>% summary()
 
 # Calculating for each simulation
 
@@ -135,16 +137,45 @@ final_output <- (final_output
 
 
 cum_plot <- (ggplot(final_output)
-             + aes(x = date, y = cum_cases, col = as.factor(sim_id))
-             + geom_line(alpha = 0.2)
-             + theme(legend.position = "none")
-             + scale_color_manual(values = rep("red", number_of_sims))
-             + lims(y = c(0,12000), x = c(min(dat$date), min(dat$date) + 70)) # improve limit axis specs
-              + geom_point(mapping = aes(x=median_cases_date, y = threshold), col = 'black', size  = 3)
-            + geom_segment(mapping = aes(x=ci_l_cases_date, xend = ci_u_cases_date, y= threshold, yend = threshold), col = 'black', size = 1)
-             + geom_point(mapping = aes(x=median_cases_date_10g, y = threshold_10g), col = 'black', size  = 3)
-            + geom_segment(mapping = aes(x=ci_l_cases_date_10g, xend = ci_u_cases_date_10g, y= threshold_10g, yend = threshold_10g), col = 'black', size = 1)
-             )
++
+  aes(x = date, y = cum_cases, col = as.factor(sim_id))
+  +
+  geom_line(alpha = 0.2)
+  +
+  theme(legend.position = "none")
+  +
+  scale_color_manual(values = rep("red", number_of_sims))
+  +
+  lims(y = c(0, 12000), x = c(min(dat$date), min(dat$date) + 70)) # improve limit axis specs
+  +
+  geom_point(
+    mapping = aes(x = median_cases_date, y = threshold),
+    col = "black", size = 3
+  )
+  +
+  geom_segment(
+    mapping = aes(
+      x = ci_l_cases_date,
+      xend = ci_u_cases_date,
+      y = threshold, yend = threshold
+    ),
+    col = "black", size = 1
+  )
+  +
+  geom_point(
+    mapping = aes(x = median_cases_date_10g, y = threshold_10g),
+    col = "black", size = 3
+  )
+  +
+  geom_segment(
+    mapping = aes(
+      x = ci_l_cases_date_10g,
+      xend = ci_u_cases_date_10g,
+      y = threshold_10g, yend = threshold_10g
+    ),
+    col = "black", size = 1
+  )
+)
 
 
 print(cum_plot)
