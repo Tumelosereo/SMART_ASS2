@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+# SMART
+Practice exercises for the SACEMA Modelling and Analytics Response Team (SMART) meetings. The project focuses on a particular aspect of outbreak response science, analytics, and modelling, skills development and application to real-world problems. The simulations are generated using the branching process model to generate the time series for the daily median cases. The estimated dates are plotted when South Africa reported about 1000 and 10000 cases.
+
 # Directory structure
 This folder contains subfolders:
 1. data - contains the cleaned data  
@@ -17,8 +19,10 @@ other scripts in the same folder and produces and saves outputs such
 as figures. If any of the folders to save to do not exist, it will create them.
 If the raw data does not exist, it will download, clean, and save it to file for the analysis.
 
-=======
-# SMART
-Practice exercises for the SACEMA Modelling and Analytics Response Team (SMART) meetings.
-Tumelo
->>>>>>> 71cdc24f21e090f984a7fe3261f943391c4b203d
+# Software and R packages requirements
+1. R - a statistical programming language
+2. R Studio (recommended)- a user interface for R 
+
+Packages to be installed and required to run the code in this repository:
+
+ggplot2, bpmodels, dplyr, tidyr, purrr, readr and lubridate.
