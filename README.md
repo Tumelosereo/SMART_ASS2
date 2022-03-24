@@ -25,8 +25,11 @@ RStudio, be sure to set the root directory as sa_1k_cases.
 
 2. Run `get_data.R`. The script take a raw data from github repository and perform data cleaning, i.e `sa_covid_upto_mar13_2020.rds`, which is saved at `./sa_1k_cases/data`.
 
-2. Source `./scripts/ts_output_post_processing.R`. The script sources
+3. To generate time series, the script `generate_joint_ts.R` is used and produces outputs simulated, other also sourced as a required to get the output.
+
+4. Source `./scripts/ts_output_post_processing.R`. The script sources
 other scripts in the same folder and produces and saves outputs such
 as figures. If any of the folders to save to do not exist, it will create them.
 If the raw data does not exist, it will download, clean, and save it to file for the analysis.
+
 
